@@ -1,5 +1,6 @@
 import { Hotel } from './models/hotel';
 import { Reserva } from './models/reserva';
+import promptSync from 'prompt-sync';
 
 function Menu() {
     const hotel = new Hotel();
@@ -7,7 +8,7 @@ function Menu() {
     console.log(" Bienvenido a nuestro hotel ");
 
     let choice = 0;
-    while (choice !== 7) {
+    while (choice < 7) {
         console.log("\nMenú:");
         console.log("1. Buscar reservación por ID");
         console.log("2. Obtener todas las reservaciones ordenadas por fecha de check-in");
@@ -17,11 +18,12 @@ function Menu() {
         console.log("6. mostrar todas las reservaciones");
         console.log("7. Salir");
 
-        const input = prompt("Ingrese el número de la opción deseada:");
-        choice = input ? parseInt(input) : 0;
+        const promptSync = require('prompt-sync')();
+        const prompt = promptSync();
+        const choice = prompt("Ingrese el número de la opción deseada:");
 
         switch (choice) {
-            case 1:
+            case "1":
                 try {
                     const id = parseInt(prompt("Ingrese el ID de la reservación a buscar:") || '0');
                     const reserva = hotel.searchReserva(id);
@@ -30,11 +32,11 @@ function Menu() {
                     console.log("erroe")
                 }
                 break;
-            case 2:
+            case "2":
                 const sortedReservas = hotel.getSortReservas();
                 console.log("Reservaciones ordenadas por fecha de check-in:", sortedReservas);
                 break;
-            case 3:
+            case "3":
                 try {
                     const newReserva = new Reserva(
                         parseInt(prompt("Ingrese el ID de la nueva reservación:") || '0'),
@@ -49,7 +51,7 @@ function Menu() {
                     console.log("erroe")
                 }
                 break;
-            case 4:
+            case "4":
                 try {
                     const idToRemove = parseInt(prompt("Ingrese el ID de la reservación a eliminar:") || '0');
                     const removedReserva = hotel.removeReserva(idToRemove);
@@ -58,14 +60,14 @@ function Menu() {
                     console.log("erroe")
                 }
                 break;
-            case 5:
+            case "5":
                 const allReservas = hotel.getSortReservas();
                 console.log("Todas las reservaciones:", allReservas);
                 break;
-                case 6:
+            case "6":
                     console.table(hotel.getReservation())
                     break;
-            case 7:
+            case "7":
                 console.log("Saliendo del sistema...");
                 break;
             default:
