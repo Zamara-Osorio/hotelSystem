@@ -18,7 +18,7 @@ function Menu() {
         console.log("6. mostrar todas las reservaciones");
         console.log("7. Salir");
 
-        const promptSync = require('prompt-sync')();
+       
         const prompt = promptSync();
         const choice = prompt("Ingrese el número de la opción deseada:");
 
