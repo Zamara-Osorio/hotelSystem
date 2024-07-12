@@ -39,19 +39,9 @@ export class Hotel {
 
     
     getReservation() :void{
-         const getReservation = this.reservas.map((reserva) =>{
-        return{
-            id:reserva.id,
-            nombre:reserva.nombre,
-            checkIn:reserva.checkIn,
-            checkOut:reserva.checkOut,
-            numero_de_Habitacion:reserva.numeroHabitacion,
-        };
-
-
-
-})
-    }
+         const getReservation = this.reservas
+         console.table(getReservation)
+}
 
     getAvailableRooms(checkIn: string, checkOut: string): number[] {
         return [];
