@@ -27,14 +27,16 @@ function Menu() {
                 try {
                     const id = parseInt(prompt("Ingresar el ID de la reserva que desea buscar:") || '0');
                     const reserva = hotel.searchReserva(id);
-                    console.log("La Reservación fue encontrada:", reserva);
+                    console.log("La Reservación fue encontrada:" );
+                    console.table(reserva)
                 } catch (error) {
                     console.log("ERROR")
                 }
                 break;
             case "2":
                 const sortedReservas = hotel.getSortReservas();
-                console.log("Las Reservaciones ordenadas por fechas de check-in:", sortedReservas);
+                console.log("Las Reservaciones ordenadas por fechas de check-in:");
+                console.table(sortedReservas)
                 break;
             case "3":
                 try {
@@ -46,7 +48,8 @@ function Menu() {
                         parseInt(prompt("Ingrese el número de la habitación ") || '0')
                     );
                     hotel.addReserva(newReserva);
-                    console.log("Reservación nueva para agregada:", newReserva);
+                    console.log("Reservación nueva para agregada:");
+                    console.table(newReserva)
                 } catch (error) {
                     console.log("ERROR")
                 }
@@ -55,18 +58,20 @@ function Menu() {
                 try {
                     const idToRemove = parseInt(prompt("Ingrese el ID de la reservación a eliminar:") || '0');
                     const removedReserva = hotel.removeReserva(idToRemove);
-                    console.log("Reservación ha sido eliminada:", removedReserva);
+                    console.log("Reservación ha sido eliminada:");
+                    console.table(removedReserva)
                 } catch (error) {
                     console.log("ERROR")
                 }
                 break;
             case "5":
                 const allReservas = hotel.getSortReservas();
-                console.log("MostrarTodas las reservaciones:", allReservas);
+                console.log("MostrarTodas las reservaciones por el check-in de forma asendente:" );
+                console.table(allReservas)
                 break;
             case "6":
-                   const getReservation =hotel.getReservation()
-                   console.table(getReservation)
+                console.log("MostrarTodas las reservaciones:" );
+                   hotel.getReservation()
                     break;
             case "7":
                 console.log("Estamos saliendo del sistema");
